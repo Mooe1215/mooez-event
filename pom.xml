@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.zyd</groupId>
+    <artifactId>mooez-event-pom</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>mooez-event-spring-boot-starter</module>
+        <module>mooez-event-core-handler</module>
+        <module>mooez-event-commons</module>
+        <module>mooez-event-standard</module>
+    </modules>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring-boot.version>2.3.0.RELEASE</spring-boot.version>
+        <mooez-custom.version>1.0-SNAPSHOT</mooez-custom.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+
+            <dependency>
+                <groupId>com.zyd</groupId>
+                <artifactId>mooez-event-standard</artifactId>
+                <version>${mooez-custom.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.zyd</groupId>
+                <artifactId>mooez-event-commons</artifactId>
+                <version>${mooez-custom.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.zyd</groupId>
+                <artifactId>mooez-event-core-handler</artifactId>
+                <version>${mooez-custom.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <!-- 父工程提供SpringBoot依赖 所有子工程自动继承 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+    </dependencies>
+
+</project>

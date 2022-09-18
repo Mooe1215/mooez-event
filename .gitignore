@@ -1,0 +1,11 @@
+### Example user template template
+### Example user template
+
+# java base file
+.idea
+*.iml
+target
+*.class
+jdbc.properties
+*.jar
+*.war
