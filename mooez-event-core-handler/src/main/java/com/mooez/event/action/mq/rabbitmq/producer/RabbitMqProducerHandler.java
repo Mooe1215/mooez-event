@@ -33,6 +33,11 @@ public class RabbitMqProducerHandler implements MqProducerStandard {
         //判断消息类型 如果是迅捷消息 消息即不需要持久化
         //如果是其他类型 消息需要持久化
         messageProperties.setDeliveryMode(mooezMessage.getMsgType() == 0 ? MessageDeliveryMode.NON_PERSISTENT : MessageDeliveryMode.PERSISTENT);
+        //判断事件类型
+        if (mooezMessage.getMsgType() == 2){
+            //延迟消息，设置延迟时间
+            messageProperties.setHeader("x-delay",mooezMessage.getDelayTime());
+        }
 
         //将发送的内容序列化
         byte[] body = SerializationUtils.serialize(mooezMessage);
@@ -40,6 +45,10 @@ public class RabbitMqProducerHandler implements MqProducerStandard {
 
         if (mooezMessage.getMsgType() == 2) {
             //延迟消息
+            rabbitTemplate.send(
+                    Constants.RABBITMQ_DELAY_EXCHANGE_NAME,
+                    mooezMessage.getEventType(),
+                    message);
         } else {
             //迅捷消息
             //发送到指定交换机
