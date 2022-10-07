@@ -18,9 +18,15 @@ import java.util.List;
 @Slf4j
 public class DefaultCoreProducerHandler implements CoreProducerStandard {
 
+    /**
+     * 注入生产端拦截器
+     */
     @Autowired(required = false)
     private List<MooezProducerInterceptor> producerInterceptors;
 
+    /**
+     *
+     */
     @Autowired
     private MqProducerStandard mqProducerStandard;
 

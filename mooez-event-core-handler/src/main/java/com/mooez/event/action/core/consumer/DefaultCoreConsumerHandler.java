@@ -1,9 +1,9 @@
 package com.mooez.event.action.core.consumer;
 
-import com.mooez.event.action.apply.consumer.IMooezEventHandler;
+import com.mooez.event.action.apply.consumer.MooezEventHandler;
 import com.mooez.event.action.apply.consumer.MooezEvent;
 import com.mooez.event.standard.entity.MooezMessage;
-import com.mooez.event.standard.inter.CoreProducerStandard;
+import com.mooez.event.standard.inter.CoreConsumerStandard;
 import com.mooez.event.standard.interceptor.MooezConsumerInterceptor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import java.util.List;
  * Date: 2022/9/19 0:04
  */
 @Slf4j
-public class DefaultCoreConsumerHandler implements CoreProducerStandard {
+public class DefaultCoreConsumerHandler implements CoreConsumerStandard {
 
     /**
      * 注入消费者拦截器的集合
@@ -29,15 +29,10 @@ public class DefaultCoreConsumerHandler implements CoreProducerStandard {
      * 注入消费者的实现类
      */
     @Autowired
-    private List<IMooezEventHandler> mooezEventHandlers;
+    private List<MooezEventHandler> mooezEventHandlers;
 
-    /**
-     * 核心服务层处理消息
-     *
-     * @param mooezMessage
-     */
     @Override
-    public void sendMessage(MooezMessage mooezMessage) {
+    public void msgHandler(MooezMessage mooezMessage) {
         //进行消费者拦截器的相关处理
         if (consumerInterceptors != null) {
             for (MooezConsumerInterceptor consumerInterceptor : consumerInterceptors) {
@@ -56,7 +51,7 @@ public class DefaultCoreConsumerHandler implements CoreProducerStandard {
         }
 
         //调用应用层的代码进消息的实际处理 - 提供接口给开发者进行调用后处理消息
-        for (IMooezEventHandler eventHandler : mooezEventHandlers) {
+        for (MooezEventHandler eventHandler : mooezEventHandlers) {
             //消息的事件类型
             String eventType = mooezMessage.getEventType();
             //处理器需要处理的事件类型

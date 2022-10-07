@@ -1,6 +1,6 @@
 package com.mooez.event.action.mq.rabbitmq.config;
 
-import com.mooez.event.action.apply.consumer.IMooezEventHandler;
+import com.mooez.event.action.apply.consumer.MooezEventHandler;
 import com.mooez.event.action.apply.consumer.MooezEvent;
 import com.mooez.event.action.mq.rabbitmq.consumer.RabbitMqConsumerListener;
 import com.mooez.event.action.mq.rabbitmq.producer.RabbitMqProducerHandler;
@@ -62,10 +62,10 @@ public class MooezRabbitMQConfiguration {
     /**
      * 消费者的配置
      *
-     * @ConditionalOnBean(IMooezEventHandler.class) - 如果当前IOC容器中 有一个类型的Bean是IMooezEventHandler类型，当前的这个配置类就会被Spring加载
+     * @ConditionalOnBean(MooezEventHandler.class) - 如果当前IOC容器中 有一个类型的Bean是MooezEventHandler类型，当前的这个配置类就会被Spring加载
      */
     @Configuration
-    @ConditionalOnBean(IMooezEventHandler.class)
+    @ConditionalOnBean(MooezEventHandler.class)
     public static class RabbitMQConsumerConfiguration {
 
         {
@@ -79,7 +79,7 @@ public class MooezRabbitMQConfiguration {
          * 获取消费端的 自定义的监听器集合
          */
         @Autowired
-        public List<IMooezEventHandler> eventHandlers;
+        public List<MooezEventHandler> eventHandlers;
 
         /**
          * RabbitMQ的默认消费者对象
@@ -109,12 +109,12 @@ public class MooezRabbitMQConfiguration {
         public Binding getEventBinding(DirectExchange eventExchange, Queue eventQueue) {
 
             //循环所有的消费者监听器 - 获取事件类型
-            for (IMooezEventHandler eventHandler : eventHandlers) {
+            for (MooezEventHandler eventHandler : eventHandlers) {
                 //通过反射获取监听器对象上注解的事件类型
                 MooezEvent mooezEvent = eventHandler.getClass().getAnnotation(MooezEvent.class);
                 //注解不存在则跳过
                 if (mooezEvent == null)
-                    throw new RuntimeException("The MooezEvent annotation event type must be added to the bean of type IMooezEventHandler!");
+                    throw new RuntimeException("The MooezEvent annotation event type must be added to the bean of type MooezEventHandler!");
 
                 //获取交换机绑定队列的对象
                 Binding binding = BindingBuilder

@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit;
  * Author: Mooez
  * Date: 2022/9/17 10:15
  */
-public class EventTemplate {
+public class MooezEventTemplate {
 
     /**
      * 获得 核心服务层生产端的操作对象

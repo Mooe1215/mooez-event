@@ -1,12 +1,11 @@
 package com.mooez.event.config;
 
-import com.mooez.event.action.apply.consumer.IMooezEventHandler;
+import com.mooez.event.action.apply.consumer.MooezEventHandler;
 import com.mooez.event.action.core.consumer.DefaultCoreConsumerHandler;
 import com.mooez.event.action.core.producer.DefaultCoreProducerHandler;
 import com.mooez.event.commons.utils.ApplicationUtils;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -16,7 +15,6 @@ import org.springframework.context.annotation.Configuration;
  * Date: 2022/9/19 0:29
  */
 @Configuration
-@ComponentScan("com.mooez")
 public class MooezEventConfiguration {
 
     /**
@@ -34,7 +32,7 @@ public class MooezEventConfiguration {
      * @return
      */
     @Bean
-    @ConditionalOnBean(IMooezEventHandler.class)
+    @ConditionalOnBean(MooezEventHandler.class)
     public DefaultCoreConsumerHandler getDefaultCoreConsumerHandler(){
         return new DefaultCoreConsumerHandler();
     }

@@ -7,7 +7,7 @@
     <groupId>com.mooez</groupId>
     <artifactId>mooez-event-pom</artifactId>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <modules>
         <module>mooez-event-spring-boot-starter</module>
         <module>mooez-event-core-handler</module>
@@ -20,8 +20,60 @@
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring-boot.version>2.3.0.RELEASE</spring-boot.version>
-        <mooez-custom.version>1.0-SNAPSHOT</mooez-custom.version>
+        <mooez-custom.version>1.0</mooez-custom.version>
     </properties>
+
+    <!-- 开源许可证声明
+有很多不同的开源许可证
+Apache Version2.0 表示别人可以直接商用你的开源项目而无任何版权问题 -->
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <!--开源地址-->
+    <scm>
+        <connection>scm:git:git@github.com:mooe1215/mooez-event.git</connection>
+        <developerConnection>scm:git:git@github.com:mooe1215/mooez-event.git</developerConnection>
+        <url>git@github.com:mooe1215/mooez-event.git</url>
+    </scm>
+
+    <!--  Issue地址  -->
+    <issueManagement>
+        <system>Github Issue</system>
+        <url>https://github.com/mooe1215/mooez-event/issues</url>
+    </issueManagement>
+
+
+    <!-- 开发者信息 -->
+    <developers>
+        <developer>
+            <name>mooez</name>
+            <id>mooez</id>
+            <email>mooez@qq.com</email>
+            <roles>
+                <role>Developer</role>
+            </roles>
+            <timezone>+8</timezone>
+        </developer>
+    </developers>
+
+
+    <!-- 发布的仓库地址，注意id的ossrh必须和上一步中setting.xml中配置的server的id一致
+    注意：网上介绍的地址基本都已经过时
+     -->
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 
     <dependencyManagement>
         <dependencies>

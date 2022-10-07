@@ -8,7 +8,7 @@ import com.mooez.event.standard.entity.MooezMessage;
  * Author: Mooez
  * Date: 2022/9/18 16:38
  */
-public interface IMooezEventHandler<T> {
+public interface MooezEventHandler<T> {
 
     /**
      * 事件处理

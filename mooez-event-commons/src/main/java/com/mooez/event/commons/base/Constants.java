@@ -9,8 +9,8 @@ package com.mooez.event.commons.base;
 public interface Constants {
 
     /* rabbitmq的事件交换机的名称 */
-    String RABBITMQ_NORMAL_EXCHANGE_NAME = "event-exchange";
+    String RABBITMQ_NORMAL_EXCHANGE_NAME = "rabbitmq-event-exchange";
 
     /* 队列的前缀名称 */
-    String RABBIT_QUEUE_PREFIX = "event-queue-";
+    String RABBIT_QUEUE_PREFIX = "rabbitmq-event-queue-";
 }
