@@ -24,8 +24,6 @@ public class RabbitMqProducerHandler implements MqProducerStandard {
 
     /**
      * 发送消息到RabbitMQ服务
-     *
-     * @param mooezMessage
      */
     @Override
     public void sendMessage2MQ(MooezMessage mooezMessage) {

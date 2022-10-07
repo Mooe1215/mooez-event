@@ -28,9 +28,6 @@ public class MooezEventTemplate {
 
     /**
      * 发送迅捷消息 - 不保证可靠性 性能最高 实时性最好
-     *
-     * @param eventType
-     * @param data
      */
     public static <T> void sendQuickly(String eventType, T data) {
         send(eventType, data, 0, null);
@@ -38,10 +35,6 @@ public class MooezEventTemplate {
 
     /**
      * 发送可靠消息 - 保证消息可达 略微损耗性能和实时性
-     *
-     * @param eventType
-     * @param data
-     * @param <T>
      */
     public static <T> void sendReliable(String eventType, T data) {
         send(eventType, data, 1, null);
@@ -49,11 +42,6 @@ public class MooezEventTemplate {
 
     /**
      * 发送延迟消息
-     *
-     * @param eventType
-     * @param data
-     * @param time
-     * @param <T>
      */
     public static <T> void sendDelay(String eventType, T data, long time, TimeUnit unit) {
         send(eventType, data, 2, unit.toMillis(time));
@@ -62,12 +50,6 @@ public class MooezEventTemplate {
 
     /**
      * 统一的发送方法
-     *
-     * @param eventType
-     * @param data
-     * @param msgType
-     * @param delayTimeMs
-     * @param <T>
      */
     private static <T> void send(String eventType, T data, Integer msgType, Long delayTimeMs) {
         //构建MooezMassage对象

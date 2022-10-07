@@ -4,7 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.mooez</groupId>
+    <parent>
+        <artifactId>oss-parent</artifactId>
+        <groupId>org.sonatype.oss</groupId>
+        <version>7</version>
+    </parent>
+
+    <groupId>io.github.mooe1215</groupId>
     <artifactId>mooez-event-pom</artifactId>
     <packaging>pom</packaging>
     <version>1.0</version>
@@ -86,19 +92,19 @@ Apache Version2.0 表示别人可以直接商用你的开源项目而无任何�
             </dependency>
 
             <dependency>
-                <groupId>com.mooez</groupId>
+                <groupId>io.github.mooe1215</groupId>
                 <artifactId>mooez-event-standard</artifactId>
                 <version>${mooez-custom.version}</version>
             </dependency>
 
             <dependency>
-                <groupId>com.mooez</groupId>
+                <groupId>io.github.mooe1215</groupId>
                 <artifactId>mooez-event-commons</artifactId>
                 <version>${mooez-custom.version}</version>
             </dependency>
 
             <dependency>
-                <groupId>com.mooez</groupId>
+                <groupId>io.github.mooe1215</groupId>
                 <artifactId>mooez-event-core-handler</artifactId>
                 <version>${mooez-custom.version}</version>
             </dependency>

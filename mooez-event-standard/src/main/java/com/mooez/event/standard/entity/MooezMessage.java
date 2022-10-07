@@ -115,7 +115,6 @@ public class MooezMessage<T> implements Serializable {
 
         /**
          * 构建对象
-         * @return
          */
         public MooezMessage build(){
             MooezMessage mooezMessage = new MooezMessage();

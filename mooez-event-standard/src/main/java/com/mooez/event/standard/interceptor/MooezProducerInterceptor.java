@@ -12,7 +12,6 @@ public interface MooezProducerInterceptor {
 
     /**
      * 判断当前拦截器 是否需要对当前消息进行拦截
-     * @param mooezMessage
      * @return true - 拦截器的interceptor触发 / false - 跳过当前拦截器
      */
     boolean isSupport(MooezMessage mooezMessage);

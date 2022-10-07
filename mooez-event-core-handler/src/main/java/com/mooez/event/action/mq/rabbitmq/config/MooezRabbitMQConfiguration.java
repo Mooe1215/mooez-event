@@ -41,8 +41,6 @@ public class MooezRabbitMQConfiguration {
 
         /**
          * 创建一个普通事件交换机
-         *
-         * @return EventExchange
          */
         @Bean
         public DirectExchange getEventExchange() {
@@ -51,7 +49,6 @@ public class MooezRabbitMQConfiguration {
 
         /**
          * 生产端 - RabbitMQ的处理实现类
-         * @return
          */
         @Bean
         public RabbitMqProducerHandler getRabbitMqProducerHandler(){
@@ -62,7 +59,7 @@ public class MooezRabbitMQConfiguration {
     /**
      * 消费者的配置
      *
-     * @ConditionalOnBean(MooezEventHandler.class) - 如果当前IOC容器中 有一个类型的Bean是MooezEventHandler类型，当前的这个配置类就会被Spring加载
+     * ConditionalOnBean(MooezEventHandler.class) - 如果当前IOC容器中 有一个类型的Bean是MooezEventHandler类型，当前的这个配置类就会被Spring加载
      */
     @Configuration
     @ConditionalOnBean(MooezEventHandler.class)
@@ -83,7 +80,6 @@ public class MooezRabbitMQConfiguration {
 
         /**
          * RabbitMQ的默认消费者对象
-         * @return
          */
         @Bean
         public RabbitMqConsumerListener getRabbitMqConsumerListener(){
@@ -92,8 +88,6 @@ public class MooezRabbitMQConfiguration {
 
         /**
          * 创建一个消费端的队列
-         *
-         * @return
          */
         @Bean
         public Queue getEventQueue() {
@@ -102,8 +96,6 @@ public class MooezRabbitMQConfiguration {
 
         /**
          * 将队列和交换机绑定
-         *
-         * @return
          */
         @Bean
         public Binding getEventBinding(DirectExchange eventExchange, Queue eventQueue) {

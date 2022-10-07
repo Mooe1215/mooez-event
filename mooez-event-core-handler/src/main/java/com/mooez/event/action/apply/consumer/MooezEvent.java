@@ -18,7 +18,6 @@ public @interface MooezEvent {
 
     /**
      * 表示当前需要注册的事件名称
-     * @return
      */
     String value();
 }
